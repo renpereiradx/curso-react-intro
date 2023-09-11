@@ -1,10 +1,19 @@
 import './TodoCounter.css';
 
-export const TodoCounter = (props) => {
+/* function TodoCounter({ totalTodos, completedTodos}) {
   return (
-    <h1 className="TodoCounter">
-      Has completado <span>{props.completed}</span> de{' '}
-      <span>{props.total}</span> TODOs
+    <h1 className='TodoCounter'>
+      Has completado {completedTodos} de {totalTodos} TODOs
     </h1>
   );
-};
+} */
+
+function TodoCounter(props) {
+  return (
+    <h1 className='TodoCounter'>
+      Has completado {props.completedTodos} de {props.totalTodos} TODOs
+    </h1>
+  );
+}
+
+export { TodoCounter };
