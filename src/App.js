@@ -5,18 +5,20 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 
-const defaultTodos = [
-  { text: 'Cortar cebolla', completed: true },
-  { text: 'Tomar el curso de intro a React', completed: false },
-  { text: 'Llorar con la llorona', completed: false },
-  { text: 'Jugar Apex', completed: false },
-  { text: 'Usar estados derivados', completed: true },
-  { text: 'Prueba', completed: true },
-];
+// const defaultTodos = [
+//   { text: 'Cortar cebolla', completed: true },
+//   { text: 'Tomar el curso de intro a React', completed: false },
+//   { text: 'Llorar con la llorona', completed: false },
+//   { text: 'Jugar Apex', completed: false },
+//   { text: 'Usar estados derivados', completed: true },
+//   { text: 'Prueba', completed: true },
+// ];
 
 function App() {
   // State
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(() => {
+    return JSON.parse(localStorage.getItem('TODOS_V1')) || [];
+  });
   const [searchValue, setSearchValue] = React.useState('');
 
   // State derived
@@ -29,17 +31,22 @@ function App() {
   });
 
   // Handle Todo List
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
   const completeTodo = (text) => {
     const newTodos = [...todos];
     const indexTodo = newTodos.findIndex((todo) => todo.text == text);
     newTodos[indexTodo].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
   const deleteTodo = (text) => {
     const newTodos = [...todos];
     const indexTodo = newTodos.findIndex((todo) => todo.text == text);
     newTodos.splice(indexTodo, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (
