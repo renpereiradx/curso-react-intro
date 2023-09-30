@@ -20,6 +20,9 @@ function AppUI({
       <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
+        {loading && <p>Cargando</p>}
+        {error && <p>Hubo un error!</p>}
+        {!loading && searchedTodos.length === 0 && <p>Todo vacio</p>}
         {searchedTodos.map((todo) => {
           return (
             <TodoItem

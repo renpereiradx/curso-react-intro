@@ -1,7 +1,6 @@
 import './CreateTodoButton.css';
 
 let clickCounter = (event) => {
-  console.log('click');
   console.log(event.target);
 };
 
