@@ -12,7 +12,7 @@ import { Modal } from '../ Modal';
 import { TodoForm } from '../TodoForm';
 
 function AppUI() {
-  const { openModal, setOpenModal } = useContext(TodoContext);
+  const { openModal, setOpenModal } = React.useContext(TodoContext);
 
   return (
     <>
