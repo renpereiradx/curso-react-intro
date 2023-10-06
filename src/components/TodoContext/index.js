@@ -6,7 +6,8 @@ const TodoContext = React.createContext();
 function TodoProvider({ children }) {
  // State
   const [searchValue, setSearchValue] = React.useState('');
-
+  const [openModal, setOpenModal] = React.useState('false');
+  
   // State derived
   const {
     item: todos,
@@ -47,6 +48,8 @@ function TodoProvider({ children }) {
         searchedTodos,
         completeTodo,
         deleteTodo,
+        openModal,
+        setOpenModal
       }}
     >
       {children}

@@ -1,13 +1,13 @@
 import './CreateTodoButton.css';
 
-let clickCounter = (event) => {
-  console.log(event.target);
-};
-
-
-function CreateTodoButton() {
+function CreateTodoButton({ setOpenModal }) {
   return (
-    <button className="CreateTodoButton" onClick={clickCounter}>
+    <button
+      className="CreateTodoButton"
+      onClick={() => {
+        setOpenModal((state) => !state);
+      }}
+    >
       +
     </button>
   );
