@@ -6,7 +6,7 @@ const TodoContext = React.createContext();
 function TodoProvider({ children }) {
  // State
   const [searchValue, setSearchValue] = React.useState('');
-  const [openModal, setOpenModal] = React.useState('false');
+  const [openModal, setOpenModal] = React.useState(false);
   
   // State derived
   const {
